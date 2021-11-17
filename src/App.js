@@ -134,7 +134,7 @@ function App() {
         </Row>
         <Row>
             <Col>{wordOutput}</Col>
-            <Col><a href={"https://github.com/zzhiyuan98/579-hw6"}>https://github.com/zzhiyuan98/579-hw6</a></Col>
+            <Col><a href={"https://github.com/Q-TT/SI579-Assignment06"}>https://github.com/Q-TT/SI579-Assignment06</a></Col>
         </Row>
       </Container>
     </>
