@@ -116,28 +116,53 @@ function App() {
   };
   
   return (
-    <>
-      <Container>
-        <Row><h1>React Rhyme Finder (579 Problem Set 6)</h1></Row>
-        <Row>
-            <Col>Saved words: {savedWords}</Col>
-        </Row>
-        <Row>
-            <InputGroup>
-              <FormControl type="text" placeholder="Enter a word" value={inputText} onChange={handleChange}/>
-              <Button variant="primary" onClick={showRhymes}>Show rhyming words</Button>
-              <Button variant="secondary" onClick={showSynonyms}>Show synonyms</Button>
-            </InputGroup>
-        </Row>
-        <Row>
-            <body>{description}</body>
-        </Row>
-        <Row>
-            <Col>{wordOutput}</Col>
-            <Col><a href={"https://github.com/Q-TT/SI579-Assignment06"}>https://github.com/Q-TT/SI579-Assignment06</a></Col>
-        </Row>
-      </Container>
-    </>
+    <div className="App">
+<div>
+        <h1 className="row">Rhyme Finder (579 Problem Set 6)</h1>
+        <div className="row">
+          <div className="col">Saved words: <span id="saved_words">{savedWords.join(", ")}</span> </div>
+        </div>
+        <div className="row"> <div className="input-group col">
+            <input
+              className="form-control"
+              type="text"
+              placeholder="Enter a word"
+              value={input}
+              onChange={(e) => { setInput(e.target.value);}}
+              onKeyDown={handleKeyDown}
+            />
+            <button
+              id="show_rhymes"
+              type="button"
+              className="btn btn-primary"
+              onClick={handleRhymesClick}
+            >
+              Show rhyming words
+            </button>
+            <button
+              id="show_synonyms"
+              type="button"
+              className="btn btn-secondary"
+              onClick={handleSynonymsClick}
+            >
+              Show synonyms
+            </button>
+          </div>
+        </div>
+        <div className="row">
+          <h1 className="col" id="output_description">
+            {displayName}
+          </h1>
+        </div>
+        <div className="output row">
+          <output id="word_output" className="col">
+            {displayList}
+          </output>
+        </div>
+        <div> <a href={"https://github.com/Q-TT/SI579-Assignment06"}>https://github.com/Q-TT/SI579-Assignment06</a> </div>
+      </div>
+    </div>
   );
 }
+
 export default App;
