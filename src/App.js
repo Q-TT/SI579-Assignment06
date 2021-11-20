@@ -2,15 +2,6 @@ import { useState } from 'react';
 import { Container, Button, Row, Col, InputGroup, FormControl } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function getRhymes(rel_rhy, callback) {
-  fetch(`https://api.datamuse.com/words?${(new URLSearchParams({rel_rhy})).toString()}`)
-      .then((response) => response.json())
-      .then((data) => {
-          callback(data);
-      }, (err) => {
-          console.error(err);
-      });
-}
 
 function getSynonyms(ml, callback) {
   fetch(`https://api.datamuse.com/words?${(new URLSearchParams({ml})).toString()}`)
@@ -21,11 +12,22 @@ function getSynonyms(ml, callback) {
           console.error(err);
       });
 }
+
 function groupBy(objects, property) {
   if(typeof property !== 'function') {
       const propName = property;
       property = (obj) => obj[propName];
   }
+  
+function getRhymes(rel_rhy, callback) {
+  fetch(`https://api.datamuse.com/words?${(new URLSearchParams({rel_rhy})).toString()}`)
+      .then((response) => response.json())
+      .then((data) => {
+          callback(data);
+      }, (err) => {
+          console.error(err);
+      });
+}
 
   const groupedObjects = new Map(); 
   for(const object of objects) {
@@ -117,7 +119,7 @@ function App() {
   
   return (
     <div className="App">
-<div>
+      <div>
         <h1 className="row">Rhyme Finder (579 Problem Set 6)</h1>
         <div className="row">
           <div className="col">Saved words: <span id="saved_words">{savedWords.join(", ")}</span> </div>
@@ -164,5 +166,6 @@ function App() {
     </div>
   );
 }
+        
 
 export default App;
